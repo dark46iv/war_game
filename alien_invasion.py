@@ -8,7 +8,6 @@ from pygame.sprite import Group
 def run_game():
     # Инициализирует игру и создает объект экрана.
     pygame.init()
-
     ai_settings = Settings()
     screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
     pygame.display.set_caption("Инопланетное вторжение")
@@ -17,7 +16,6 @@ def run_game():
     ship = Ship(ai_settings, screen)
 
     # Создание группы для хранения пуль
-
     bullets = Group()
 
     # Запуск основного цикла игры.
@@ -26,13 +24,7 @@ def run_game():
         # Отслеживание событий клавиатуры и мыши.
         gf.check_events(ai_settings, screen, ship, bullets)
         ship.update()
-        bullets.update()
-
-        # удаляем пули, вышедшие за экран
-
-        for bullet in bullets.copy():
-            if bullet.rect.bottom <= 0:
-                bullets.remove(bullet)
+        gf.update_bullets(bullets)
 
         # При каждом проходе цикла перерисовывается экран.
         gf.update_screen(ai_settings, screen, ship, bullets)
