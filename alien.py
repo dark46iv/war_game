@@ -25,6 +25,6 @@ class Alien(Sprite):
         self.x = float(self.rect.x)
 
     def blitme(self):
-        """Выводит пришельца"""
+        """Выводит позицию пришельца"""
 
         self.screen.blit(self.image, self.rect)
