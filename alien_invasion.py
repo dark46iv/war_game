@@ -28,6 +28,13 @@ def run_game():
         ship.update()
         bullets.update()
 
+        # удаляем пули, вышедшие за экран
+
+        for bullet in bullets.copy():
+            if bullet.rect.bottom <= 0:
+                bullets.remove(bullet)
+        print(len(bullets))
+
         # При каждом проходе цикла перерисовывается экран.
         gf.update_screen(ai_settings, screen, ship, bullets)
 
