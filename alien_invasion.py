@@ -13,14 +13,14 @@ def run_game():
     screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
     pygame.display.set_caption("Инопланетное вторжение")
 
-    # Создание корабля
+    # Создание корабля, группы пришельцев и пуль
     ship = Ship(ai_settings, screen)
-
-    # Создание пришельца
-    alien = Alien(ai_settings, screen)
-
-    # Создание группы для хранения пуль
+    aliens = Group()
     bullets = Group()
+
+    # Создание флота пришельцев
+
+    gf.create_fleet(ai_settings, screen, aliens)
 
     # Запуск основного цикла игры.
 
@@ -31,7 +31,7 @@ def run_game():
         gf.update_bullets(bullets)
 
         # При каждом проходе цикла перерисовывается экран.
-        gf.update_screen(ai_settings, screen, ship, alien, bullets)
+        gf.update_screen(ai_settings, screen, ship, aliens, bullets)
 
         # Отображение последнего прорисованного экрана.
         pygame.display.flip()
