@@ -12,6 +12,8 @@ def check_keydown_events(event, ai_settings, screen, ship, bullets):
         ship.moving_left = True
     elif event.key == pygame.K_SPACE:
         fire_bullet(ai_settings, screen, ship, bullets)
+    elif event.key == pygame.K_q:
+        sys.exit()
 
 
 def fire_bullet(ai_settings, screen, ship, bullets):
@@ -45,7 +47,7 @@ def check_events(ai_settings, screen, ship, bullets):
             check_keyup_events(event, ship)
 
 
-def update_screen(ai_settings, screen, ship, bullets):
+def update_screen(ai_settings, screen, ship, alien, bullets):
     screen.fill(ai_settings.bg_color)
 
     # все пули выводятся позади изображений корабля и пришельцев
@@ -53,6 +55,7 @@ def update_screen(ai_settings, screen, ship, bullets):
         bullet.draw_bullet()
 
     ship.blitme()
+    alien.blitme()
 
 
 def update_bullets(bullets):

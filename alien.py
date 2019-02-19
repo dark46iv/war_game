@@ -14,7 +14,7 @@ class Alien(Sprite):
         self.ai_settings = ai_settings
 
         # загрузка изображение пришельца и назначение аттрибута rect
-        self.image = pygame.image.load(os.path.abspath(os.curdir) + '/images/ship.bmp')
+        self.image = pygame.image.load(os.path.abspath(os.curdir) + '/images/alien.bmp')
         self.rect = self.image.get_rect()
 
         # каждый новый пришелец появляется в левом верхнем углу экрана
